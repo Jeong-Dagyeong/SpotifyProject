@@ -89,7 +89,13 @@ module.exports = (env, argv) => {
         systemvars: true,
       }),
       new CopyPlugin({
-        patterns: [{ from: 'public/_redirects', to: '_redirects' }],
+        patterns: [
+          {
+            from: path.resolve(__dirname, 'public/_redirects'),
+            to: path.resolve(__dirname, 'dist/_redirects'), // ✅ 디렉토리가 아니라 정확한 "파일 경로"로 지정
+            toType: 'file', // ✅ 파일임을 명시
+          },
+        ],
       }),
     ],
   }
