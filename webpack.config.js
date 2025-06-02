@@ -95,6 +95,11 @@ module.exports = (env, argv) => {
             to: path.resolve(__dirname, 'dist/_redirects'), // ✅ 디렉토리가 아니라 정확한 "파일 경로"로 지정
             toType: 'file', // ✅ 파일임을 명시
           },
+          {
+            from: path.resolve(__dirname, 'public/images'),
+            to: path.resolve(__dirname, 'dist/images'), // ✅ 폴더 단위 복사
+            toType: 'dir', // ⬅️ 명시해도 되고 생략해도 OK
+          },
         ],
       }),
     ],
