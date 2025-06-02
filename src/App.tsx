@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react'
-import './App.css'
 import { Route, Routes } from 'react-router'
 import LoadingPage from './common/components/LoadingPage'
 
