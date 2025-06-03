@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router'
 import LoadingPage from './common/components/LoadingPage'
+import './App.css'
 
 const AppLayout = React.lazy(() => import('./layout/AppLayout'))
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'))
