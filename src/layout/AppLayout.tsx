@@ -45,10 +45,16 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   alignItems: 'center',
   gap: '20px',
   color: theme.palette.text.secondary,
-  '&: hover': {
+
+  '&.active': {
     color: theme.palette.text.primary,
   },
-  '&: active': {
+
+  '& svg': {
+    color: theme.palette.text.secondary,
+  },
+
+  '&.active svg': {
     color: theme.palette.text.primary,
   },
 }))
