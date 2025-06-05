@@ -1,10 +1,10 @@
 import React from 'react'
-import NewRelease from './components/NewRelease'
+import NewReleases from './components/NewReleases'
 
 const HomePage = () => {
   return (
     <div>
-      <NewRelease></NewRelease>
+      <NewReleases></NewReleases>
     </div>
   )
 }
