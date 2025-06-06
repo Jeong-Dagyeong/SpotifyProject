@@ -1,5 +1,5 @@
 export interface ExternalUrls {
-  spotify?: string
+  spotify: string
 }
 
 export interface Image {

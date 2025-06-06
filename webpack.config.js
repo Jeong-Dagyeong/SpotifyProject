@@ -87,6 +87,10 @@ module.exports = (env, argv) => {
       new Dotenv({
         allowEmptyValues: true,
         systemvars: true,
+        path: isProduction ? '.env.production' : '.env.development',
+        defaults: '.env',
+        allowEmptyValues: true,
+        systemvars: true,
       }),
       new CopyPlugin({
         patterns: [
