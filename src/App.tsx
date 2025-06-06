@@ -2,7 +2,6 @@ import React, { Suspense, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import LoadingPage from './common/components/LoadingPage'
 import './App.css'
-import { exchangeToken } from './apis/authApi'
 import useExchangeToken from './hooks/useExchangeToken'
 
 const AppLayout = React.lazy(() => import('./layout/AppLayout'))
@@ -23,22 +22,23 @@ function App() {
   let code = urlParams.get('code')
   const codeVerifier = localStorage.getItem('code_verifier')
 
-  const { mutate: exChangeToken } = useExchangeToken()
+  const { mutate: exchangeToken } = useExchangeToken()
 
   useEffect(() => {
     if (code && codeVerifier) {
-      exChangeToken({ code, codeVerifier })
+      exchangeToken({ code, codeVerifier })
     }
   }, [code, codeVerifier, exchangeToken])
 
   return (
     <Suspense fallback={<LoadingPage />}>
       <Routes>
-        <Route path="/callback" element={<AppLayout />}>
+        <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="search/:keyword" element={<SearchWithKeywordPage />} />
           <Route path="playlist/:id" element={<PlaylistDetailPage />} />
+          <Route path="/callback" element={<HomePage />} />
           {/* <Route path='playlist' element={<PlaylistPage/>}/> */}
         </Route>
       </Routes>
