@@ -1,7 +1,9 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import LoadingPage from './common/components/LoadingPage'
 import './App.css'
+import { exchangeToken } from './apis/authApi'
+import useExchangeToken from './hooks/useExchangeToken'
 
 const AppLayout = React.lazy(() => import('./layout/AppLayout'))
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'))
@@ -17,10 +19,22 @@ const PlaylistDetailPage = React.lazy(() => import('./pages/PlaylistDetailPage/P
 // 5. (모바일) 플레이리스트 보여주는 페이지 /playlist
 
 function App() {
+  const urlParams = new URLSearchParams(window.location.search)
+  let code = urlParams.get('code')
+  const codeVerifier = localStorage.getItem('code_verifier')
+
+  const { mutate: exChangeToken } = useExchangeToken()
+
+  useEffect(() => {
+    if (code && codeVerifier) {
+      exChangeToken({ code, codeVerifier })
+    }
+  }, [code, codeVerifier, exchangeToken])
+
   return (
     <Suspense fallback={<LoadingPage />}>
       <Routes>
-        <Route path="/" element={<AppLayout />}>
+        <Route path="/callback" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="search/:keyword" element={<SearchWithKeywordPage />} />
