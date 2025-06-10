@@ -1,0 +1,102 @@
+"use strict";(self.webpackChunkspotify_demo=self.webpackChunkspotify_demo||[]).push([[926],{978:(e,t,n)=>{n.d(t,{A:()=>L});var r=n(6540),o=n(4164),i=n(1362);function s(e){try{return e.matches(":focus-visible")}catch(e){}return!1}var a=n(6739),l=n(3202);const c=n(4902).A;var u=n(3576);const p=function(e){const t=r.useRef(e);return(0,u.A)((()=>{t.current=e})),r.useRef(((...e)=>(0,t.current)(...e))).current},d={};function f(e,t){const n=r.useRef(d);return n.current===d&&(n.current=e(t)),n}class h{static create(){return new h}static use(){const e=f(h.create).current,[t,n]=r.useState(!1);return e.shouldMount=t,e.setShouldMount=n,r.useEffect(e.mountEffect,[t]),e}constructor(){this.ref={current:null},this.mounted=null,this.didMount=!1,this.shouldMount=!1,this.setShouldMount=null}mount(){return this.mounted||(this.mounted=function(){let e,t;const n=new Promise(((n,r)=>{e=n,t=r}));return n.resolve=e,n.reject=t,n}(),this.shouldMount=!0,this.setShouldMount(this.shouldMount)),this.mounted}mountEffect=()=>{this.shouldMount&&!this.didMount&&null!==this.ref.current&&(this.didMount=!0,this.mounted.resolve())};start(...e){this.mount().then((()=>this.ref.current?.start(...e)))}stop(...e){this.mount().then((()=>this.ref.current?.stop(...e)))}pulsate(...e){this.mount().then((()=>this.ref.current?.pulsate(...e)))}}var m=n(8168);function v(e,t){return v=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(e,t){return e.__proto__=t,e},v(e,t)}const y=r.createContext(null);function b(e,t){var n=Object.create(null);return e&&r.Children.map(e,(function(e){return e})).forEach((function(e){n[e.key]=function(e){return t&&(0,r.isValidElement)(e)?t(e):e}(e)})),n}function g(e,t,n){return null!=n[t]?n[t]:e.props[t]}function x(e,t,n){var o=b(e.children),i=function(e,t){function n(n){return n in t?t[n]:e[n]}e=e||{},t=t||{};var r,o=Object.create(null),i=[];for(var s in e)s in t?i.length&&(o[s]=i,i=[]):i.push(s);var a={};for(var l in t){if(o[l])for(r=0;r<o[l].length;r++){var c=o[l][r];a[o[l][r]]=n(c)}a[l]=n(l)}for(r=0;r<i.length;r++)a[i[r]]=n(i[r]);return a}(t,o);return Object.keys(i).forEach((function(s){var a=i[s];if((0,r.isValidElement)(a)){var l=s in t,c=s in o,u=t[s],p=(0,r.isValidElement)(u)&&!u.props.in;!c||l&&!p?c||!l||p?c&&l&&(0,r.isValidElement)(u)&&(i[s]=(0,r.cloneElement)(a,{onExited:n.bind(null,a),in:u.props.in,exit:g(a,"exit",e),enter:g(a,"enter",e)})):i[s]=(0,r.cloneElement)(a,{in:!1}):i[s]=(0,r.cloneElement)(a,{onExited:n.bind(null,a),in:!0,exit:g(a,"exit",e),enter:g(a,"enter",e)})}})),i}var S=Object.values||function(e){return Object.keys(e).map((function(t){return e[t]}))},A=function(e){var t,n;function o(t,n){var r,o=(r=e.call(this,t,n)||this).handleExited.bind(function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(r));return r.state={contextValue:{isMounting:!0},handleExited:o,firstRender:!0},r}n=e,(t=o).prototype=Object.create(n.prototype),t.prototype.constructor=t,v(t,n);var i=o.prototype;return i.componentDidMount=function(){this.mounted=!0,this.setState({contextValue:{isMounting:!1}})},i.componentWillUnmount=function(){this.mounted=!1},o.getDerivedStateFromProps=function(e,t){var n,o,i=t.children,s=t.handleExited;return{children:t.firstRender?(n=e,o=s,b(n.children,(function(e){return(0,r.cloneElement)(e,{onExited:o.bind(null,e),in:!0,appear:g(e,"appear",n),enter:g(e,"enter",n),exit:g(e,"exit",n)})}))):x(e,i,s),firstRender:!1}},i.handleExited=function(e,t){var n=b(this.props.children);e.key in n||(e.props.onExited&&e.props.onExited(t),this.mounted&&this.setState((function(t){var n=(0,m.A)({},t.children);return delete n[e.key],{children:n}})))},i.render=function(){var e=this.props,t=e.component,n=e.childFactory,o=function(e,t){if(null==e)return{};var n={};for(var r in e)if({}.hasOwnProperty.call(e,r)){if(-1!==t.indexOf(r))continue;n[r]=e[r]}return n}(e,["component","childFactory"]),i=this.state.contextValue,s=S(this.state.children).map(n);return delete o.appear,delete o.enter,delete o.exit,null===t?r.createElement(y.Provider,{value:i},s):r.createElement(y.Provider,{value:i},r.createElement(t,o,s))},o}(r.Component);A.propTypes={},A.defaultProps={component:"div",childFactory:function(e){return e}};const k=A,M=[];class R{static create(){return new R}currentId=null;start(e,t){this.clear(),this.currentId=setTimeout((()=>{this.currentId=null,t()}),e)}clear=()=>{null!==this.currentId&&(clearTimeout(this.currentId),this.currentId=null)};disposeEffect=()=>this.clear}var w=n(7437),E=n(4848);var P=n(6148);const C=(0,P.A)("MuiTouchRipple",["root","ripple","rippleVisible","ripplePulsate","child","childLeaving","childPulsate"]),N=w.i7`
+  0% {
+    transform: scale(0);
+    opacity: 0.1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+`,z=w.i7`
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+`,j=w.i7`
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.92);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+`,$=(0,a.Ay)("span",{name:"MuiTouchRipple",slot:"Root"})({overflow:"hidden",pointerEvents:"none",position:"absolute",zIndex:0,top:0,right:0,bottom:0,left:0,borderRadius:"inherit"}),T=(0,a.Ay)((function(e){const{className:t,classes:n,pulsate:i=!1,rippleX:s,rippleY:a,rippleSize:l,in:c,onExited:u,timeout:p}=e,[d,f]=r.useState(!1),h=(0,o.A)(t,n.ripple,n.rippleVisible,i&&n.ripplePulsate),m={width:l,height:l,top:-l/2+a,left:-l/2+s},v=(0,o.A)(n.child,d&&n.childLeaving,i&&n.childPulsate);return c||d||f(!0),r.useEffect((()=>{if(!c&&null!=u){const e=setTimeout(u,p);return()=>{clearTimeout(e)}}}),[u,c,p]),(0,E.jsx)("span",{className:h,style:m,children:(0,E.jsx)("span",{className:v})})}),{name:"MuiTouchRipple",slot:"Ripple"})`
+  opacity: 0;
+  position: absolute;
+
+  &.${C.rippleVisible} {
+    opacity: 0.3;
+    transform: scale(1);
+    animation-name: ${N};
+    animation-duration: ${550}ms;
+    animation-timing-function: ${({theme:e})=>e.transitions.easing.easeInOut};
+  }
+
+  &.${C.ripplePulsate} {
+    animation-duration: ${({theme:e})=>e.transitions.duration.shorter}ms;
+  }
+
+  & .${C.child} {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+
+  & .${C.childLeaving} {
+    opacity: 0;
+    animation-name: ${z};
+    animation-duration: ${550}ms;
+    animation-timing-function: ${({theme:e})=>e.transitions.easing.easeInOut};
+  }
+
+  & .${C.childPulsate} {
+    position: absolute;
+    /* @noflip */
+    left: 0px;
+    top: 0;
+    animation-name: ${j};
+    animation-duration: 2500ms;
+    animation-timing-function: ${({theme:e})=>e.transitions.easing.easeInOut};
+    animation-iteration-count: infinite;
+    animation-delay: 200ms;
+  }
+`,I=r.forwardRef((function(e,t){const n=(0,l.b)({props:e,name:"MuiTouchRipple"}),{center:i=!1,classes:s={},className:a,...c}=n,[u,p]=r.useState([]),d=r.useRef(0),h=r.useRef(null);r.useEffect((()=>{h.current&&(h.current(),h.current=null)}),[u]);const m=r.useRef(!1),v=function(){const e=f(R.create).current;var t;return t=e.disposeEffect,r.useEffect(t,M),e}(),y=r.useRef(null),b=r.useRef(null),g=r.useCallback((e=>{const{pulsate:t,rippleX:n,rippleY:r,rippleSize:i,cb:a}=e;p((e=>[...e,(0,E.jsx)(T,{classes:{ripple:(0,o.A)(s.ripple,C.ripple),rippleVisible:(0,o.A)(s.rippleVisible,C.rippleVisible),ripplePulsate:(0,o.A)(s.ripplePulsate,C.ripplePulsate),child:(0,o.A)(s.child,C.child),childLeaving:(0,o.A)(s.childLeaving,C.childLeaving),childPulsate:(0,o.A)(s.childPulsate,C.childPulsate)},timeout:550,pulsate:t,rippleX:n,rippleY:r,rippleSize:i},d.current)])),d.current+=1,h.current=a}),[s]),x=r.useCallback(((e={},t={},n=()=>{})=>{const{pulsate:r=!1,center:o=i||t.pulsate,fakeElement:s=!1}=t;if("mousedown"===e?.type&&m.current)return void(m.current=!1);"touchstart"===e?.type&&(m.current=!0);const a=s?null:b.current,l=a?a.getBoundingClientRect():{width:0,height:0,left:0,top:0};let c,u,p;if(o||void 0===e||0===e.clientX&&0===e.clientY||!e.clientX&&!e.touches)c=Math.round(l.width/2),u=Math.round(l.height/2);else{const{clientX:t,clientY:n}=e.touches&&e.touches.length>0?e.touches[0]:e;c=Math.round(t-l.left),u=Math.round(n-l.top)}if(o)p=Math.sqrt((2*l.width**2+l.height**2)/3),p%2==0&&(p+=1);else{const e=2*Math.max(Math.abs((a?a.clientWidth:0)-c),c)+2,t=2*Math.max(Math.abs((a?a.clientHeight:0)-u),u)+2;p=Math.sqrt(e**2+t**2)}e?.touches?null===y.current&&(y.current=()=>{g({pulsate:r,rippleX:c,rippleY:u,rippleSize:p,cb:n})},v.start(80,(()=>{y.current&&(y.current(),y.current=null)}))):g({pulsate:r,rippleX:c,rippleY:u,rippleSize:p,cb:n})}),[i,g,v]),S=r.useCallback((()=>{x({},{pulsate:!0})}),[x]),A=r.useCallback(((e,t)=>{if(v.clear(),"touchend"===e?.type&&y.current)return y.current(),y.current=null,void v.start(0,(()=>{A(e,t)}));y.current=null,p((e=>e.length>0?e.slice(1):e)),h.current=t}),[v]);return r.useImperativeHandle(t,(()=>({pulsate:S,start:x,stop:A})),[S,x,A]),(0,E.jsx)($,{className:(0,o.A)(C.root,s.root,a),ref:b,...c,children:(0,E.jsx)(k,{component:null,exit:!0,children:u})})}));var V=n(1908);function O(e){return(0,V.Ay)("MuiButtonBase",e)}const D=(0,P.A)("MuiButtonBase",["root","disabled","focusVisible"]),B=(0,a.Ay)("button",{name:"MuiButtonBase",slot:"Root"})({display:"inline-flex",alignItems:"center",justifyContent:"center",position:"relative",boxSizing:"border-box",WebkitTapHighlightColor:"transparent",backgroundColor:"transparent",outline:0,border:0,margin:0,borderRadius:0,padding:0,cursor:"pointer",userSelect:"none",verticalAlign:"middle",MozAppearance:"none",WebkitAppearance:"none",textDecoration:"none",color:"inherit","&::-moz-focus-inner":{borderStyle:"none"},[`&.${D.disabled}`]:{pointerEvents:"none",cursor:"default"},"@media print":{colorAdjust:"exact"}});function F(e,t,n,r=!1){return p((o=>(n&&n(o),r||e[t](o),!0)))}const L=r.forwardRef((function(e,t){const n=(0,l.b)({props:e,name:"MuiButtonBase"}),{action:a,centerRipple:u=!1,children:d,className:f,component:m="button",disabled:v=!1,disableRipple:y=!1,disableTouchRipple:b=!1,focusRipple:g=!1,focusVisibleClassName:x,LinkComponent:S="a",onBlur:A,onClick:k,onContextMenu:M,onDragLeave:R,onFocus:w,onFocusVisible:P,onKeyDown:C,onKeyUp:N,onMouseDown:z,onMouseLeave:j,onMouseUp:$,onTouchEnd:T,onTouchMove:V,onTouchStart:D,tabIndex:L=0,TouchRippleProps:X,touchRippleRef:Y,type:_,...H}=n,U=r.useRef(null),W=h.use(),K=c(W.ref,Y),[q,Z]=r.useState(!1);v&&q&&Z(!1),r.useImperativeHandle(a,(()=>({focusVisible:()=>{Z(!0),U.current.focus()}})),[]);const G=W.shouldMount&&!y&&!v;r.useEffect((()=>{q&&g&&!y&&W.pulsate()}),[y,g,q,W]);const J=F(W,"start",z,b),Q=F(W,"stop",M,b),ee=F(W,"stop",R,b),te=F(W,"stop",$,b),ne=F(W,"stop",(e=>{q&&e.preventDefault(),j&&j(e)}),b),re=F(W,"start",D,b),oe=F(W,"stop",T,b),ie=F(W,"stop",V,b),se=F(W,"stop",(e=>{s(e.target)||Z(!1),A&&A(e)}),!1),ae=p((e=>{U.current||(U.current=e.currentTarget),s(e.target)&&(Z(!0),P&&P(e)),w&&w(e)})),le=()=>{const e=U.current;return m&&"button"!==m&&!("A"===e.tagName&&e.href)},ce=p((e=>{g&&!e.repeat&&q&&" "===e.key&&W.stop(e,(()=>{W.start(e)})),e.target===e.currentTarget&&le()&&" "===e.key&&e.preventDefault(),C&&C(e),e.target===e.currentTarget&&le()&&"Enter"===e.key&&!v&&(e.preventDefault(),k&&k(e))})),ue=p((e=>{g&&" "===e.key&&q&&!e.defaultPrevented&&W.stop(e,(()=>{W.pulsate(e)})),N&&N(e),k&&e.target===e.currentTarget&&le()&&" "===e.key&&!e.defaultPrevented&&k(e)}));let pe=m;"button"===pe&&(H.href||H.to)&&(pe=S);const de={};"button"===pe?(de.type=void 0===_?"button":_,de.disabled=v):(H.href||H.to||(de.role="button"),v&&(de["aria-disabled"]=v));const fe=c(t,U),he={...n,centerRipple:u,component:m,disabled:v,disableRipple:y,disableTouchRipple:b,focusRipple:g,tabIndex:L,focusVisible:q},me=(e=>{const{disabled:t,focusVisible:n,focusVisibleClassName:r,classes:o}=e,s={root:["root",t&&"disabled",n&&"focusVisible"]},a=(0,i.A)(s,O,o);return n&&r&&(a.root+=` ${r}`),a})(he);return(0,E.jsxs)(B,{as:pe,className:(0,o.A)(me.root,f),ownerState:he,onBlur:se,onClick:k,onContextMenu:Q,onFocus:ae,onKeyDown:ce,onKeyUp:ue,onMouseDown:J,onMouseLeave:ne,onMouseUp:te,onDragLeave:ee,onTouchEnd:oe,onTouchMove:ie,onTouchStart:re,ref:fe,tabIndex:v?-1:L,type:_,...de,...H,children:[d,G?(0,E.jsx)(I,{ref:K,center:u,...X}):null]})}))},2354:(e,t,n)=>{n.d(t,{A:()=>s});var r=n(6540);let o=0;const i={...n.t(r,2)}.useId,s=function(e){if(void 0!==i){const t=i();return e??t}return function(e){const[t,n]=r.useState(e),i=e||t;return r.useEffect((()=>{null==t&&(o+=1,n(`mui-${o}`))}),[t]),i}(e)}},4292:(e,t,n)=>{n.d(t,{A:()=>o});var r=n(6540);function o(e,t){return r.isValidElement(e)&&-1!==t.indexOf(e.type.muiName??e.type?._payload?.value?.muiName)}},4902:(e,t,n)=>{n.d(t,{A:()=>o});var r=n(6540);function o(...e){const t=r.useRef(void 0),n=r.useCallback((t=>{const n=e.map((e=>{if(null==e)return null;if("function"==typeof e){const n=e,r=n(t);return"function"==typeof r?r:()=>{n(null)}}return e.current=t,()=>{e.current=null}}));return()=>{n.forEach((e=>e?.()))}}),e);return r.useMemo((()=>e.every((e=>null==e))?null:e=>{t.current&&(t.current(),t.current=void 0),null!=e&&(t.current=n(e))}),e)}},8834:(e,t,n)=>{n.d(t,{A:()=>c});var r=n(4902);const o=function(e,t,n){return void 0===e||"string"==typeof e?t:{...t,ownerState:{...t.ownerState,...n}}},i=function(e,t,n){return"function"==typeof e?e(t,n):e};var s=n(4164);const a=function(e){if(void 0===e)return{};const t={};return Object.keys(e).filter((t=>!(t.match(/^on[A-Z]/)&&"function"==typeof e[t]))).forEach((n=>{t[n]=e[n]})),t},l=function(e){const{getSlotProps:t,additionalProps:n,externalSlotProps:r,externalForwardedProps:o,className:i}=e;if(!t){const e=(0,s.A)(n?.className,i,o?.className,r?.className),t={...n?.style,...o?.style,...r?.style},a={...n,...o,...r};return e.length>0&&(a.className=e),Object.keys(t).length>0&&(a.style=t),{props:a,internalRef:void 0}}const l=function(e,t=[]){if(void 0===e)return{};const n={};return Object.keys(e).filter((n=>n.match(/^on[A-Z]/)&&"function"==typeof e[n]&&!t.includes(n))).forEach((t=>{n[t]=e[t]})),n}({...o,...r}),c=a(r),u=a(o),p=t(l),d=(0,s.A)(p?.className,n?.className,i,o?.className,r?.className),f={...p?.style,...n?.style,...o?.style,...r?.style},h={...p,...n,...u,...c};return d.length>0&&(h.className=d),Object.keys(f).length>0&&(h.style=f),{props:h,internalRef:p.ref}};function c(e,t){const{className:n,elementType:s,ownerState:a,externalForwardedProps:c,internalForwardedProps:u,shouldForwardComponentProp:p=!1,...d}=t,{component:f,slots:h={[e]:void 0},slotProps:m={[e]:void 0},...v}=c,y=h[e]||s,b=i(m[e],a),{props:{component:g,...x},internalRef:S}=l({className:n,...d,externalForwardedProps:"root"===e?v:void 0,externalSlotProps:b}),A=(0,r.A)(S,b?.ref,t.ref),k="root"===e?g||f:g;return[y,o(y,{..."root"===e&&!f&&!h[e]&&u,..."root"!==e&&!h[e]&&u,...x,...k&&!p&&{as:k},...k&&p&&{component:k},ref:A},a)]}},8861:(e,t,n)=>{n.d(t,{A:()=>k});var r=n(6540),o=n(4164),i=n(1362),s=n(7437),a=n(6739),l=n(9241),c=n(3202),u=n(9407),p=n(1321),d=n(6148),f=n(1908);function h(e){return(0,f.Ay)("MuiCircularProgress",e)}(0,d.A)("MuiCircularProgress",["root","determinate","indeterminate","colorPrimary","colorSecondary","svg","circle","circleDeterminate","circleIndeterminate","circleDisableShrink"]);var m=n(4848);const v=s.i7`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`,y=s.i7`
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: -126px;
+  }
+`,b="string"!=typeof v?s.AH`
+        animation: ${v} 1.4s linear infinite;
+      `:null,g="string"!=typeof y?s.AH`
+        animation: ${y} 1.4s ease-in-out infinite;
+      `:null,x=(0,a.Ay)("span",{name:"MuiCircularProgress",slot:"Root",overridesResolver:(e,t)=>{const{ownerState:n}=e;return[t.root,t[n.variant],t[`color${(0,u.A)(n.color)}`]]}})((0,l.A)((({theme:e})=>({display:"inline-block",variants:[{props:{variant:"determinate"},style:{transition:e.transitions.create("transform")}},{props:{variant:"indeterminate"},style:b||{animation:`${v} 1.4s linear infinite`}},...Object.entries(e.palette).filter((0,p.A)()).map((([t])=>({props:{color:t},style:{color:(e.vars||e).palette[t].main}})))]})))),S=(0,a.Ay)("svg",{name:"MuiCircularProgress",slot:"Svg"})({display:"block"}),A=(0,a.Ay)("circle",{name:"MuiCircularProgress",slot:"Circle",overridesResolver:(e,t)=>{const{ownerState:n}=e;return[t.circle,t[`circle${(0,u.A)(n.variant)}`],n.disableShrink&&t.circleDisableShrink]}})((0,l.A)((({theme:e})=>({stroke:"currentColor",variants:[{props:{variant:"determinate"},style:{transition:e.transitions.create("stroke-dashoffset")}},{props:{variant:"indeterminate"},style:{strokeDasharray:"80px, 200px",strokeDashoffset:0}},{props:({ownerState:e})=>"indeterminate"===e.variant&&!e.disableShrink,style:g||{animation:`${y} 1.4s ease-in-out infinite`}}]})))),k=r.forwardRef((function(e,t){const n=(0,c.b)({props:e,name:"MuiCircularProgress"}),{className:r,color:s="primary",disableShrink:a=!1,size:l=40,style:p,thickness:d=3.6,value:f=0,variant:v="indeterminate",...y}=n,b={...n,color:s,disableShrink:a,size:l,thickness:d,value:f,variant:v},g=(e=>{const{classes:t,variant:n,color:r,disableShrink:o}=e,s={root:["root",n,`color${(0,u.A)(r)}`],svg:["svg"],circle:["circle",`circle${(0,u.A)(n)}`,o&&"circleDisableShrink"]};return(0,i.A)(s,h,t)})(b),k={},M={},R={};if("determinate"===v){const e=2*Math.PI*((44-d)/2);k.strokeDasharray=e.toFixed(3),R["aria-valuenow"]=Math.round(f),k.strokeDashoffset=`${((100-f)/100*e).toFixed(3)}px`,M.transform="rotate(-90deg)"}return(0,m.jsx)(x,{className:(0,o.A)(g.root,r),style:{width:l,height:l,...M,...p},ownerState:b,ref:t,role:"progressbar",...R,...y,children:(0,m.jsx)(S,{className:g.svg,ownerState:b,viewBox:"22 22 44 44",children:(0,m.jsx)(A,{className:g.circle,style:k,ownerState:b,cx:44,cy:44,r:(44-d)/2,fill:"none",strokeWidth:d})})})}))},9792:(e,t,n)=>{n.d(t,{A:()=>y});var r=n(6540),o=n(4164),i=n(1362),s=n(9407),a=n(6739),l=n(9241),c=n(3202),u=n(6148),p=n(1908);function d(e){return(0,p.Ay)("MuiSvgIcon",e)}(0,u.A)("MuiSvgIcon",["root","colorPrimary","colorSecondary","colorAction","colorError","colorDisabled","fontSizeInherit","fontSizeSmall","fontSizeMedium","fontSizeLarge"]);var f=n(4848);const h=(0,a.Ay)("svg",{name:"MuiSvgIcon",slot:"Root",overridesResolver:(e,t)=>{const{ownerState:n}=e;return[t.root,"inherit"!==n.color&&t[`color${(0,s.A)(n.color)}`],t[`fontSize${(0,s.A)(n.fontSize)}`]]}})((0,l.A)((({theme:e})=>({userSelect:"none",width:"1em",height:"1em",display:"inline-block",flexShrink:0,transition:e.transitions?.create?.("fill",{duration:(e.vars??e).transitions?.duration?.shorter}),variants:[{props:e=>!e.hasSvgAsChild,style:{fill:"currentColor"}},{props:{fontSize:"inherit"},style:{fontSize:"inherit"}},{props:{fontSize:"small"},style:{fontSize:e.typography?.pxToRem?.(20)||"1.25rem"}},{props:{fontSize:"medium"},style:{fontSize:e.typography?.pxToRem?.(24)||"1.5rem"}},{props:{fontSize:"large"},style:{fontSize:e.typography?.pxToRem?.(35)||"2.1875rem"}},...Object.entries((e.vars??e).palette).filter((([,e])=>e&&e.main)).map((([t])=>({props:{color:t},style:{color:(e.vars??e).palette?.[t]?.main}}))),{props:{color:"action"},style:{color:(e.vars??e).palette?.action?.active}},{props:{color:"disabled"},style:{color:(e.vars??e).palette?.action?.disabled}},{props:{color:"inherit"},style:{color:void 0}}]})))),m=r.forwardRef((function(e,t){const n=(0,c.b)({props:e,name:"MuiSvgIcon"}),{children:a,className:l,color:u="inherit",component:p="svg",fontSize:m="medium",htmlColor:v,inheritViewBox:y=!1,titleAccess:b,viewBox:g="0 0 24 24",...x}=n,S=r.isValidElement(a)&&"svg"===a.type,A={...n,color:u,component:p,fontSize:m,instanceFontSize:e.fontSize,inheritViewBox:y,viewBox:g,hasSvgAsChild:S},k={};y||(k.viewBox=g);const M=(e=>{const{color:t,fontSize:n,classes:r}=e,o={root:["root","inherit"!==t&&`color${(0,s.A)(t)}`,`fontSize${(0,s.A)(n)}`]};return(0,i.A)(o,d,r)})(A);return(0,f.jsxs)(h,{as:p,className:(0,o.A)(M.root,l),focusable:"false",color:v,"aria-hidden":!b||void 0,role:b?"img":void 0,ref:t,...k,...x,...S&&a.props,ownerState:A,children:[S?a.props.children:a,b?(0,f.jsx)("title",{children:b}):null]})}));m.muiName="SvgIcon";const v=m;function y(e,t){function n(t,n){return(0,f.jsx)(v,{"data-testid":void 0,ref:n,...t,children:e})}return n.muiName=v.muiName,r.memo(r.forwardRef(n))}}}]);
+//# sourceMappingURL=926.js.map?ver=9ff2b6bc914460d788cc

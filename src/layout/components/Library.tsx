@@ -3,6 +3,7 @@ import useGetCurrentUserPlaylists from '../../hooks/useGetCurrentUserPlaylists'
 import useGetCurrentUserProfile from '../../hooks/useGetCurrentUserProfile'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { Navigate, useNavigate } from 'react-router'
 
 const PlaylistContainer = styled('div')(({ theme }) => ({
   overflowY: 'auto',
@@ -33,6 +34,12 @@ const Library = () => {
     }
   }, [inView, hasNextPage, isFetchingNextPage])
 
+  const navigate = useNavigate()
+
+  const handleClick = (id: string) => {
+    navigate(`/playlist/${id}`)
+  }
+
   if (!user || !data) return null
 
   return (
@@ -41,8 +48,10 @@ const Library = () => {
         {data.pages.map((page, pageIndex) =>
           page.items.map((playlist, i) => {
             const imageUrl = Array.isArray(playlist.images) && playlist.images.length > 0 ? playlist.images[0].url : ''
+            const id = playlist.id
+            if (!id) return null
             return (
-              <ImageListItem key={`${pageIndex}-${playlist.id}`}>
+              <ImageListItem key={`${pageIndex}-${playlist.id}`} onClick={() => handleClick(id)}>
                 <img
                   src={imageUrl || '/broken-image.jpg'}
                   alt={playlist.name}
