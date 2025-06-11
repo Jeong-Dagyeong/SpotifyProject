@@ -53,7 +53,7 @@ const Library = () => {
             return (
               <ImageListItem key={`${pageIndex}-${playlist.id}`} onClick={() => handleClick(id)}>
                 <img
-                  src={imageUrl || '/broken-image.jpg'}
+                  src={imageUrl || '/images/noImage.png'}
                   alt={playlist.name}
                   loading="lazy"
                   style={{ borderRadius: 8 }}

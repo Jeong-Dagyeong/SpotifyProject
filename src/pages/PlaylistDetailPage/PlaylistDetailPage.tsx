@@ -7,10 +7,11 @@ import LoadingPage from '../../common/components/LoadingPage'
 const PlaylistDetailContainer = styled('div')(({ theme }) => ({
   width: '100%',
   height: '200px',
-  padding: '16px',
+  padding: '16px 16px 0px 16px',
   display: 'flex',
   alignItems: 'center',
   gap: '16px',
+  borderBottom: '0.5px solid white',
 }))
 
 const PlaylistHeader = styled('div')(({ theme }) => ({
@@ -35,7 +36,7 @@ const PlaylistDetailPage = () => {
   return (
     <PlaylistDetailContainer>
       <img
-        src={imageUrl || '/broken-image.jpg'}
+        src={imageUrl || '/images/noImage.png'}
         alt={playlist.name}
         loading="lazy"
         style={{ borderRadius: 8, width: 100, height: 100 }}
@@ -48,7 +49,7 @@ const PlaylistDetailPage = () => {
           {playlist.owner.display_name}
         </Typography>
         <Typography variant="h2" fontWeight={700} color="theme.primary">
-          {playlist.images.length} songs
+          {playlist.images?.length} songs
         </Typography>
       </PlaylistHeader>
     </PlaylistDetailContainer>

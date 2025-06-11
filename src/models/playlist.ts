@@ -1,4 +1,3 @@
-import { QueryClient } from '@tanstack/react-query'
 import { ApiResponse } from './apiResponse'
 import { ExternalUrls, Followers, Image, Owner } from './commonType'
 
