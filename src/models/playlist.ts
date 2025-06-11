@@ -1,5 +1,8 @@
 import { ApiResponse } from './apiResponse'
-import { ExternalUrls, Followers, Image, Owner } from './commonType'
+import { Artist } from './artist'
+import { ExternalUrls, Followers, Image, Owner, Restriction } from './commonType'
+import { IEpisode } from './episode'
+import { ITrack } from './track'
 
 export interface GetCurrentUserPlaylistRequest {
   limit?: number
@@ -54,21 +57,19 @@ export interface Track {
     album_type: string
     total_tracks: number
     available_markets: string[]
-
     external_urls: ExternalUrls
     href: string
     id: string
+    images: Image[]
+    name: string
+    release_date: string
+    release_date_precision: string
+    restrictions?: Restriction
+    type: string
+    uri: string
+    artists: SimplifiedAtrist[]
   }
-  images: Image[]
-  // name: string
-  release_date: string
-  release_date_precision: string
-  restriction?: {
-    reason: string
-  }
-  // type: string
-  // uri: string
-  artists: SimplifiedAtrist[]
+  artists?: Artist[]
   available_markets?: string[]
   disc_number?: number
   duration_ms?: number
@@ -78,19 +79,17 @@ export interface Track {
     ean?: string
     upc?: string
   }
-  external_urls: ExternalUrls
+  external_urls?: ExternalUrls
   href?: string
   id?: string
   is_playable?: boolean
-  linked_from?: object
-  restrictions?: {
-    reason?: string
-  }
+  linked_from?: ITrack
+  restrictions?: Restriction
   name?: string
   popularity?: number
-  preview_url: string | null
+  preview_url?: string | null // Deprecated
   track_number?: number
-  type?: string
+  type?: 'track'
   uri?: string
   is_local?: boolean
 }
@@ -101,13 +100,13 @@ export interface Episode {
   html_description: string
   duration_ms: number
   explicit: boolean
-  externaul_urls: ExternalUrls
+  external_urls: ExternalUrls
   href: string
   id: string
   images: Image[]
   is_externally_hosted: boolean
   is_playable: boolean
-  language?: string
+  language?: string // Deprecated
   languages: string[]
   name: string
   release_date: string
@@ -115,19 +114,16 @@ export interface Episode {
   resume_point?: {
     fully_played?: boolean
     resume_position_ms?: number
-    type: string
-    uri: string
-    restrictions?: {
-      reason?: string
-    }
-    show: {
-      available_markets: string[]
-    }
+  }
+  type: 'episode'
+  uri: string
+  restrictions: Restriction
+  show: {
+    available_markets: string[]
     copyrights: {
-      // array of CopyrightObject
       text?: string
       type?: string
-    }
+    }[]
     description: string
     html_description: string
     explicit: boolean
@@ -140,8 +136,8 @@ export interface Episode {
     media_type: string
     name: string
     publisher: string
-    // type: string
-    // uri: string
+    type: 'show'
+    uri: string
     total_episodes: number
   }
 }
@@ -162,4 +158,25 @@ export interface GetPlaylistRequest {
   market?: string
   fields?: string
   additional_types?: string
+}
+
+export interface GetPlaylistItemsRequest extends GetPlaylistRequest {
+  offset?: number
+  limit?: number
+}
+
+export type GetPlaylistItemsResponse = ApiResponse<PlaylistTrack>
+
+export interface PlaylistTrack {
+  added_at?: string | null
+  added_by?: {
+    external_urls?: ExternalUrls
+    followers?: Followers
+    href?: string
+    id?: string
+    type?: string
+    uri?: string
+  } | null
+  is_local?: boolean
+  track: Track | Episode
 }
