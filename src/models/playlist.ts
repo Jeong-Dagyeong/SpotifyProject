@@ -180,3 +180,10 @@ export interface PlaylistTrack {
   is_local?: boolean
   track: Track | Episode
 }
+
+export interface CreatePlaylistRequest {
+  name: string
+  playlist_public?: boolean
+  collaborative?: boolean
+  description?: string
+}

@@ -9,13 +9,11 @@ import { PAGE_LIMIT } from '../../configs/commonConfig'
 
 const PlaylistDetailContainer = styled('div')(({ theme }) => ({
   width: '100%',
-  // height: '200px',
   padding: '16px 16px 0px 16px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '16px',
-  // borderBottom: '0.5px solid white',
 }))
 
 const PlaylistHeader = styled('div')(({ theme }) => ({
@@ -24,20 +22,32 @@ const PlaylistHeader = styled('div')(({ theme }) => ({
   marginLeft: '20px',
 }))
 
+const TableWrapper = styled('div')(() => ({
+  overflowY: 'auto',
+  maxHeight: 'calc(100vh - 300px - 100px)',
+  width: '100%',
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+}))
+
 const PlaylistDetailPage = () => {
   const { id } = useParams<{ id: string }>()
   const { data: playlist, isLoading } = useGetPlaylist({
     playlist_id: id || '',
   })
   console.log(playlist)
+
   const {
     data: playlistItems,
     isLoading: isPlaylistItemsLoading,
     error: playlistItemsLoading,
+    fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    fetchNextPage,
-  } = usePlaylistItems({ playlist_id: id || '', limit: PAGE_LIMIT, offset: 0 })
+  } = usePlaylistItems({ playlist_id: id || '', limit: 10 })
 
   console.log('ddd', playlistItems)
 
@@ -62,37 +72,39 @@ const PlaylistDetailPage = () => {
           {playlist.owner.display_name}
         </Typography>
         <Typography variant="h2" fontWeight={700} color="theme.primary">
-          {playlist.images?.length} songs
+          {playlist?.tracks?.total ?? 0} songs
         </Typography>
       </PlaylistHeader>
       {playlist?.tracks?.total === 0 ? (
         <Typography>Search</Typography>
       ) : (
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>#</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Album</TableCell>
-              <TableCell>Date Added</TableCell>
-              <TableCell>Duration</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {playlistItems?.pages.map((page, pageIndex) =>
-              page.items.map((item, itemIndex) => {
-                return (
-                  <DesktopPlaylistItem
-                    item={item}
-                    key={pageIndex * PAGE_LIMIT + itemIndex + 1}
-                    index={pageIndex * PAGE_LIMIT + itemIndex + 1}
-                    playlist_id={id}
-                  />
-                )
-              })
-            )}
-          </TableBody>
-        </Table>
+        <TableWrapper>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Album</TableCell>
+                <TableCell>Date Added</TableCell>
+                <TableCell>Duration</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {playlistItems?.pages.map((page, pageIndex) =>
+                page.items.map((item, itemIndex) => {
+                  return (
+                    <DesktopPlaylistItem
+                      item={item}
+                      key={pageIndex * PAGE_LIMIT + itemIndex + 1}
+                      index={pageIndex * PAGE_LIMIT + itemIndex + 1}
+                      playlist_id={id}
+                    />
+                  )
+                })
+              )}
+            </TableBody>
+          </Table>
+        </TableWrapper>
       )}
     </PlaylistDetailContainer>
   )

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Episode, PlaylistTrack, Track } from '../../../models/playlist'
-import { styled, TableCell, TableContainer, TableRow } from '@mui/material'
+import { styled, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
 import useGetPlaylistItems from '../../../hooks/useGetPlaylistItems'
 import { useInView } from 'react-intersection-observer'
 
@@ -10,17 +10,42 @@ interface DesktopPlaylistItemProps {
   playlist_id: string
 }
 
+const NoBorderTableCell = styled(TableCell)(() => ({
+  borderBottom: 'none',
+}))
+
+const HoverTableRow = styled(TableRow)(({ theme }) => ({
+  '&:hover': {
+    backgroundColor: theme.palette.action.hover,
+  },
+}))
+
 // const PlaylistContainer = styled('div')({
 //   '&::-webkit-scrollbar': {
 //     display: 'none',
 //   },
 // })
 
+// const TableRow = styled('table')(({ theme }) => ({
+//   maxHeight: '70vh', // 원하는 스크롤 영역 높이
+//   overflowY: 'auto',
+//   '&::-webkit-scrollbar': {
+//     display: 'none',
+//   },
+//   msOverflowStyle: 'none', // IE, Edge
+//   scrollbarWidth: 'none', // Firefox
+// }))
+
 const DesktopPlaylistItem = ({ item, index, playlist_id }: DesktopPlaylistItemProps) => {
+  // const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetPlaylistItems({
+  //   limit: 10,
+  //   offset: 0,
+  //   playlist_id,
+  // })
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetPlaylistItems({
-    limit: 10,
-    offset: 0,
     playlist_id,
+    limit: 10,
   })
 
   console.log('ddd', data)
@@ -47,18 +72,29 @@ const DesktopPlaylistItem = ({ item, index, playlist_id }: DesktopPlaylistItemPr
   let duration = `${minutes}:${seconds}`
 
   return (
-    // <TableContainer ref={ref} sx={{ display: 'inline-block', width: 1, height: 1 }}>
-    <TableRow>
-      <TableCell>{index}</TableCell>
-      <TableCell>{item.track.name || 'no name'}</TableCell>
-      <TableCell>{isEpisode(item.track) ? 'N/A' : item.track.album?.name}</TableCell>
-      <TableCell>{dateAdded || 'Unknown'}</TableCell>
-      <TableCell>
+    // <PlaylistTableContainer>
+    <HoverTableRow>
+      <NoBorderTableCell>{index}</NoBorderTableCell>
+      <NoBorderTableCell>{item.track.name || 'no name'}</NoBorderTableCell>
+      <NoBorderTableCell>{isEpisode(item.track) ? 'N/A' : item.track.album?.name}</NoBorderTableCell>
+      <NoBorderTableCell>{dateAdded || 'Unknown'}</NoBorderTableCell>
+      <NoBorderTableCell>
         {duration || 'Unknown'}
         <span ref={ref} style={{ display: 'inline-block', width: 1, height: 1 }} />
-      </TableCell>
-    </TableRow>
-    // </TableContainer>
+      </NoBorderTableCell>
+    </HoverTableRow>
+    //   // </PlaylistTableContainer>
+    //   // <PlaylistTableContainer>
+    //   //   <TableContainer>
+    //   //     <Table>
+    //   //       <TableBody>
+    //   //         {items.map((item, index) => (
+    //   //           <DesktopPlaylistItem key={item.track.id} item={item} index={index + 1} playlist_id={playlistId} />
+    //   //         ))}
+    //   //       </TableBody>
+    //   //     </Table>
+    //   //   </TableContainer>
+    //   // </PlaylistTableContainer>
   )
 }
 

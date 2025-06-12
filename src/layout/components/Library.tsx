@@ -4,6 +4,7 @@ import useGetCurrentUserProfile from '../../hooks/useGetCurrentUserProfile'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Navigate, useNavigate } from 'react-router'
+import EmptyPlaylist from './EmptyPlaylist'
 
 const PlaylistContainer = styled('div')(({ theme }) => ({
   overflowY: 'auto',
@@ -17,6 +18,12 @@ const PlaylistContainer = styled('div')(({ theme }) => ({
   scrollbarWidth: 'none',
   [theme.breakpoints.down('sm')]: {
     maxHeight: 'calc(100vh - 65px - 119px)',
+  },
+}))
+
+const HoverPlaylistItem = styled(ImageListItem)(({ theme }) => ({
+  '&:hover': {
+    backgroundColor: theme.palette.action.hover,
   },
 }))
 
@@ -44,32 +51,39 @@ const Library = () => {
 
   return (
     <PlaylistContainer>
-      <ImageList cols={2} gap={16} variant="standard">
-        {data.pages.map((page, pageIndex) =>
-          page.items.map((playlist, i) => {
-            const imageUrl = Array.isArray(playlist.images) && playlist.images.length > 0 ? playlist.images[0].url : ''
-            const id = playlist.id
-            if (!id) return null
-            return (
-              <ImageListItem key={`${pageIndex}-${playlist.id}`} onClick={() => handleClick(id)}>
-                <img
-                  src={imageUrl || '/images/noImage.png'}
-                  alt={playlist.name}
-                  loading="lazy"
-                  style={{ borderRadius: 8 }}
-                />
-                <Typography variant="subtitle1" fontWeight={700} color="limegreen" mt={1}>
-                  {playlist.name}
-                </Typography>
-                <Typography variant="body2" color="#aaa">
-                  Playlist • {playlist.owner.display_name}
-                </Typography>
-              </ImageListItem>
-            )
-          })
-        )}
-      </ImageList>
-      <div ref={ref} />
+      {user.id ? (
+        <>
+          <ImageList cols={2} gap={16} variant="standard">
+            {data.pages.map((page, pageIndex) =>
+              page.items.map((playlist, i) => {
+                const imageUrl =
+                  Array.isArray(playlist.images) && playlist.images.length > 0 ? playlist.images[0].url : ''
+                const id = playlist.id
+                if (!id) return null
+                return (
+                  <HoverPlaylistItem key={`${pageIndex}-${playlist.id}`} onClick={() => handleClick(id)}>
+                    <img
+                      src={imageUrl || '/images/noImage.png'}
+                      alt={playlist.name}
+                      loading="lazy"
+                      style={{ borderRadius: 8 }}
+                    />
+                    <Typography variant="subtitle1" fontWeight={700} color="limegreen" mt={1}>
+                      {playlist.name}
+                    </Typography>
+                    <Typography variant="body2" color="#aaa">
+                      Playlist • {playlist.owner.display_name}
+                    </Typography>
+                  </HoverPlaylistItem>
+                )
+              })
+            )}
+          </ImageList>
+          <div ref={ref} />
+        </>
+      ) : (
+        <EmptyPlaylist />
+      )}
     </PlaylistContainer>
   )
 }

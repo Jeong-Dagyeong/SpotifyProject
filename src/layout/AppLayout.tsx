@@ -6,6 +6,7 @@ import LibraryHead from './components/LibraryHead'
 import { useEffect, useState } from 'react'
 import Library from './components/Library'
 import Navbar from './components/Navbar'
+import EmptyPlaylist from './components/EmptyPlaylist'
 
 const Layout = styled('div')({
   display: 'flex',

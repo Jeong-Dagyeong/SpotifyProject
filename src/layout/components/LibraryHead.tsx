@@ -1,6 +1,9 @@
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import { styled, Typography } from '@mui/material'
+import { Button, styled, Typography } from '@mui/material'
 import AddRoundedIcon from '@mui/icons-material/AddRounded'
+import useCreatePlaylist from '../../hooks/useCreatePlaylist'
+import LoginBtn from '../../common/components/LoginBtn'
+import { getSpotifyAuthUrl } from '../../utils/auth'
 
 const AddLibrary = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -9,6 +12,14 @@ const AddLibrary = styled('div')(({ theme }) => ({
 }))
 
 const LibraryHead = () => {
+  const { mutate: createPlaylist } = useCreatePlaylist()
+  const hadleCreatePlaylist = () => {
+    if (!localStorage.getItem('access_token')) {
+      getSpotifyAuthUrl()
+    }
+    createPlaylist({ name: '나의 플레이리스트' })
+  }
+
   return (
     <div>
       <AddLibrary>
@@ -16,7 +27,9 @@ const LibraryHead = () => {
         <Typography variant="h2" fontWeight={700}>
           Your Library
         </Typography>
-        <AddRoundedIcon sx={{ color: 'green' }} />
+        <Button onClick={hadleCreatePlaylist}>
+          <AddRoundedIcon sx={{ color: 'green' }} />
+        </Button>
       </AddLibrary>
     </div>
   )
