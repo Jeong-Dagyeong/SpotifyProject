@@ -28,7 +28,7 @@
 // export default Navbar
 
 import React, { useState } from 'react'
-import { Avatar, Box, Button, styled } from '@mui/material'
+import { Avatar, Box, Button, Dialog, DialogActions, DialogTitle, styled } from '@mui/material'
 import useGetCurrentUserProfile from '../../hooks/useGetCurrentUserProfile'
 import LoginBtn from '../../common/components/LoginBtn'
 import { useNavigate } from 'react-router'
@@ -53,19 +53,30 @@ const LogoutBox = styled(Box)(({ theme }) => ({
 const Navbar = () => {
   const [imgError, setImgError] = useState(false)
   const [showLogout, setShowLogout] = useState(false)
+  const [open, setOpen] = useState(false)
+
   const { data: userProfile } = useGetCurrentUserProfile()
   const imageUrl = userProfile?.images?.[0]?.url
   const navigate = useNavigate()
-
   const logoutQueryClient = useQueryClient()
-  const handleLogout = () => {
-    localStorage.removeItem('access_token')
-    logoutQueryClient.clear()
-    window.location.reload()
-  }
 
   const handleAvatarClick = () => {
     setShowLogout((prev) => !prev)
+  }
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const handleLogoutConfirm = () => {
+    localStorage.removeItem('access_token')
+    logoutQueryClient.clear()
+    navigate('/')
+    window.location.reload()
   }
 
   return (
@@ -81,7 +92,7 @@ const Navbar = () => {
           />
           {showLogout && (
             <LogoutBox>
-              <Button variant="text" color="inherit" size="small" onClick={handleLogout}>
+              <Button variant="text" color="inherit" size="small" onClick={handleClickOpen}>
                 Logout
               </Button>
             </LogoutBox>
@@ -90,6 +101,16 @@ const Navbar = () => {
       ) : (
         <LoginBtn />
       )}
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>로그아웃 하시겠습니까?</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose}>취소</Button>
+          <Button onClick={handleLogoutConfirm} autoFocus>
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }

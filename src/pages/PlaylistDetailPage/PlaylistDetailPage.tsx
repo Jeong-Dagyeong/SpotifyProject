@@ -6,6 +6,7 @@ import LoadingPage from '../../common/components/LoadingPage'
 import usePlaylistItems from '../../hooks/useGetPlaylistItems'
 import DesktopPlaylistItem from './components/DesktopPlaylistItem'
 import { PAGE_LIMIT } from '../../configs/commonConfig'
+import EmptyPlaylistWithSearch from './components/EmptyPlaylistWithSearch'
 
 const PlaylistDetailContainer = styled('div')(({ theme }) => ({
   width: '100%',
@@ -76,7 +77,7 @@ const PlaylistDetailPage = () => {
         </Typography>
       </PlaylistHeader>
       {playlist?.tracks?.total === 0 ? (
-        <Typography>Search</Typography>
+        <EmptyPlaylistWithSearch />
       ) : (
         <TableWrapper>
           <Table>

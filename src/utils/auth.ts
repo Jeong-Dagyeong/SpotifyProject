@@ -3,7 +3,7 @@ import { REDIRECT_URI } from '../configs/commonConfig'
 import { AuthUrlParams } from '../models/auth'
 import { base64encode, generateRandomString, sha256 } from './crypto'
 
-export const getSpotifyAuthUrl = async () => {
+export const getSpotifyAuthUrl = async (): Promise<string> => {
   const codeVerifier = generateRandomString(64)
   const hashed = await sha256(codeVerifier)
   const codeChallenge = base64encode(hashed)
@@ -28,5 +28,7 @@ export const getSpotifyAuthUrl = async () => {
     }
     authUrl.search = new URLSearchParams(Object.entries(params)).toString()
     window.location.href = authUrl.toString() // spotify 로그인 주소를 연다
+    return authUrl.toString()
   }
+  throw new Error('Missing client ID or redirect URI')
 }
