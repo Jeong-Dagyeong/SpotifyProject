@@ -40,19 +40,18 @@ export const getClientCredentialToken = async (): Promise<ClientCredentialTokenR
 }
 
 export const exchangeToken = async (code: string, codeVerifier: string): Promise<ExchangeTokenResponse> => {
+  const url = 'https://accounts.spotify.com/api/token'
+  if (!CLIENT_ID || !REDIRECT_URI) {
+    throw new Error('Missing required parameters')
+  }
+  const body = new URLSearchParams({
+    client_id: CLIENT_ID,
+    grant_type: 'authorization_code',
+    code,
+    redirect_uri: REDIRECT_URI,
+    code_verifier: codeVerifier,
+  })
   try {
-    const url = 'https://accounts.spotify.com/api/token'
-    if (!CLIENT_ID || !REDIRECT_URI) {
-      throw new Error('Missing required parameters')
-    }
-    const body = new URLSearchParams({
-      client_id: CLIENT_ID,
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: REDIRECT_URI,
-      code_verifier: codeVerifier,
-    })
-
     const response = await axios.post(url, body, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

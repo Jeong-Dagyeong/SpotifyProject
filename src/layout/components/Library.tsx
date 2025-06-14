@@ -34,16 +34,16 @@ const Library = () => {
   const { data: user } = useGetCurrentUserProfile()
   const { ref, inView } = useInView()
 
+  const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem('access_token')))
+  const navigate = useNavigate()
+
   useEffect(() => {
+    if (!isLoggedIn || !user || !data) return
+
     if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage()
     }
-  }, [inView, hasNextPage, isFetchingNextPage])
-
-  const navigate = useNavigate()
-  // const isLoggedIn = Boolean(localStorage.getItem('access_token'))
-
-  const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem('access_token')))
+  }, [inView, hasNextPage, isFetchingNextPage, isLoggedIn, user, data])
 
   useEffect(() => {
     const syncLogin = () => setIsLoggedIn(Boolean(localStorage.getItem('access_token')))

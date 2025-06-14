@@ -4,11 +4,12 @@ import { getPlaylist } from '../apis/playlistApi'
 
 const useGetPlaylist = (params: GetPlaylistRequest) => {
   return useQuery({
-    queryKey: ['playlist-detali', params.playlist_id],
+    queryKey: ['playlist-detail', params.playlist_id],
     queryFn: () => {
       return getPlaylist(params)
     },
-    enabled: !!params.playlist_id,
+    // enabled: !!params.playlist_id,
+    enabled: Boolean(params?.playlist_id),
   })
 }
 
