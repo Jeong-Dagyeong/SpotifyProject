@@ -20,7 +20,7 @@ import { getCurrentUserPlaylists } from '../apis/playlistApi'
 //   })
 // }
 
-const useGetCurrentUserPlaylists = ({ limit, offset }: GetCurrentUserPlaylistRequest, enabled: boolean) => {
+const useGetCurrentUserPlaylists = ({ limit, offset }: GetCurrentUserPlaylistRequest, enabled: boolean = true) => {
   return useInfiniteQuery({
     queryKey: ['current-user-playlists'],
     queryFn: ({ pageParam = 0 }) => {

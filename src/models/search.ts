@@ -28,7 +28,7 @@ export interface SearchResponse {
   albums?: ApiResponse<SimplifiedAlbum>
   tracks?: ApiResponse<Track>
   playlists?: ApiResponse<SimplifiedPlaylist>
-  show?: ApiResponse<Show>
+  shows?: ApiResponse<Show>
   episode?: ApiResponse<SimplifiedEpisode>
-  audiobook?: ApiResponse<SimplifiedAudioBook>
+  audiobooks?: ApiResponse<SimplifiedAudioBook>
 }

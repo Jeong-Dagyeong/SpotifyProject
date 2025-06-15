@@ -27,15 +27,17 @@ const HoverPlaylistItem = styled(ImageListItem)(({ theme }) => ({
 }))
 
 const Library = () => {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetCurrentUserPlaylists({
-    limit: 10,
-    offset: 0,
-  })
-  const { data: user } = useGetCurrentUserProfile()
-  const { ref, inView } = useInView()
-
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem('access_token')))
   const navigate = useNavigate()
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetCurrentUserPlaylists(
+    {
+      limit: 10,
+      offset: 0,
+    },
+    isLoggedIn
+  )
+  const { data: user } = useGetCurrentUserProfile()
+  const { ref, inView } = useInView()
 
   useEffect(() => {
     if (!isLoggedIn || !user || !data) return

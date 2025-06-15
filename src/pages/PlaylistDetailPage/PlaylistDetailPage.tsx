@@ -39,7 +39,6 @@ const PlaylistDetailPage = () => {
   const { data: playlist, isLoading } = useGetPlaylist({
     playlist_id: id || '',
   })
-  console.log(playlist)
 
   const {
     data: playlistItems,
@@ -49,8 +48,6 @@ const PlaylistDetailPage = () => {
     hasNextPage,
     isFetchingNextPage,
   } = usePlaylistItems({ playlist_id: id || '', limit: 10 })
-
-  console.log('ddd', playlistItems)
 
   if (!id) return <Navigate to="/" />
   if (isLoading || !playlist) return <LoadingPage />
